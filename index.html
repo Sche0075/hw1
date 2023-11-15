@@ -33,7 +33,7 @@
     <!--These are my libraries-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   
   </head>  <h1 style="text-align:center"; color="Black"; font-size=200%>My Top 5's in Different Categories</h1>
 
@@ -190,62 +190,33 @@
       D3.js Scatter Plot
       <br/>
       <br/>
-     
-          <h2>D3.js Scatter-Plot</h2>
-
-<svg id="myPlot" style="width:500px;height:500px"></svg>
-
-<script>
-// Set Dimensions
-const xSize = 500; 
-const ySize = 500;
-const margin = 40;
-const xMax = xSize - margin*2;
-const yMax = ySize - margin*2;
-
-// Create Random Points
-const numPoints = 100;
-const data = [];
-for (let i = 0; i < numPoints; i++) {
-  data.push([Math.random() * xMax, Math.random() * yMax]);
-}
-
-// Append SVG Object to the Page
-const svg = d3.select("#myPlot")
-  .append("svg")
-  .append("g")
-  .attr("transform","translate(" + margin + "," + margin + ")");
-
-// X Axis
-const x = d3.scaleLinear()
-  .domain([0, 500])
-  .range([0, xMax]);
-
-svg.append("g")
-  .attr("transform", "translate(0," + yMax + ")")
-  .call(d3.axisBottom(x));
-
-// Y Axis
-const y = d3.scaleLinear()
-  .domain([0, 500])
-  .range([ yMax, 0]);
-
-svg.append("g")
-  .call(d3.axisLeft(y));
-
-// Dots
-svg.append('g')
-  .selectAll("dot")
-  .data(data).enter()
-  .append("circle")
-  .attr("cx", function (d) { return d[0] } )
-  .attr("cy", function (d) { return d[1] } )
-  .attr("r", 3)
-  .style("fill", "Red");
-</script>
+        <script>
+          const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+          const yValues = [55, 49, 44, 24, 15];
+          const barColors = ["red", "green","blue","orange","brown"];
+          
+          new Chart("myChart", {
+            type: "bar",
+            data: {
+              labels: xValues,
+              datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+              }]
+            },
+            options: {
+              legend: {display: false},
+              title: {
+                display: true,
+                text: "World Wine Production 2018"
+              }
+            }
+          });
+          </script>        
 
 
-      
+
+       
 
 
 
