@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
       <div class="container">
@@ -103,6 +104,35 @@
   
     
 </div>
+
+        <script>
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+// Set Data
+const data = google.visualization.arrayToDataTable([
+  ['Contry', 'Mhl'],
+  ['Italy',55],
+  ['France',49],
+  ['Spain',44],
+  ['USA',24],
+  ['Argentina',15]
+]);
+
+// Set Options
+const options = {
+  title:'World Wide Wine Production'
+};
+
+// Draw
+const chart = new google.visualization.BarChart(document.getElementById('myChart'));
+chart.draw(data, options);
+
+}
+</script>
+        
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
