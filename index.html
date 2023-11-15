@@ -29,8 +29,10 @@
       }
         
       </style>
-
+    
+    <!--These are my libraries-->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
   
   </head>  <h1 style="text-align:center"; color="Black"; font-size=200%>My Top 5's in Different Categories</h1>
 
@@ -88,35 +90,8 @@
       </script>
 
       <p id="demo"></p>
-      
-      <br/>
-      Graph - Data is preset 
-
-      <div id="myPlot" style="width:100%;max-width:700px"></div>
-
-      <script>
-      const xArray = ["Italy", "France", "Spain", "USA", "Argentina"];
-      const yArray = [55, 49, 44, 24, 15];
-      
-      const data = [{
-        x:xArray,
-        y:yArray,
-        type:"bar",
-        orientation:"v",
-        marker: {color:"rgba(0,0,255,0.6)"}
-      }];
-      
-      const layout = {title:"World Wide Wine Production"};
-      
-      Plotly.newPlot("myPlot", data, layout);
-      </script>
 
       <br/>
-      <h1 onmouseover="style.color='red'" onmouseout="style.color='black'">Text highlighter (Move mouse over)</h1>
-      <br/>
-
-      
-
       <p><button onclick="myMove()">Click Me</button></p> 
 
         <div id ="container">
@@ -141,6 +116,71 @@
           }
         }
         </script>
+
+      <br/>
+      <br/>
+      JS Library specific
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      Graph - Data is preset - plotly
+
+      <div id="myPlot" style="width:100%;max-width:700px"></div>
+
+      <script>
+      const xArray = ["Italy", "France", "Spain", "USA", "Argentina"];
+      const yArray = [55, 49, 44, 24, 15];
+      
+      const data = [{
+        x:xArray,
+        y:yArray,
+        type:"bar",
+        orientation:"v",
+        marker: {color:"rgba(0,0,255,0.6)"}
+      }];
+      
+      const layout = {title:"World Wide Wine Production"};
+      
+      Plotly.newPlot("myPlot", data, layout);
+      </script>
+
+      <br/>
+      <h1 onmouseover="style.color='red'" onmouseout="style.color='black'">Text highlighter (Move mouse over)</h1>
+      <br/>
+      <br/>
+      <br/>
+      Google chart
+      <br/>
+      <br/>
+
+      <div id="myChart" style="max-width:700px; height:400px">
+
+        function drawChart() {
+
+        Set Data
+        const data = google.visualization.arrayToDataTable([
+          ['Contry', 'Mhl'],
+          ['Italy', 55],
+          ['France', 49],
+          ['Spain', 44],
+          ['USA', 24],
+          ['Argentina', 15]
+        ]);
+        
+        // Set Options
+        const options = {
+          title: 'World Wide Wine Production'
+        };
+        
+        // Draw
+        const chart = new google.visualization.BarChart(document.getElementById('myChart'));
+        chart.draw(data, options);
+        
+        }
+      </div>
+
+      
 
     
     </div>
